@@ -1,0 +1,63 @@
+body {
+  background-color: #282a36;
+  color: #f8f8f2;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1, h3 {
+  color: #50fa7b;
+}
+
+.add-game-section, .add-save-section {
+  margin-bottom: 20px;
+}
+
+input, select {
+  padding: 10px;
+  margin-right: 10px;
+  border: 1px solid #44475a;
+  background-color: #282a36;
+  color: #f8f8f2;
+}
+
+button {
+  padding: 10px;
+  background-color: #6272a4;
+  border: none;
+  color: #f8f8f2;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #50fa7b;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #44475a;
+  text-align: left;
+}
+
+th {
+  background-color: #6272a4;
+}
+
+td {
+  background-color: #282a36;
+}
+
+button {
+  margin-right: 10px;
+}

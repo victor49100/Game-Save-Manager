@@ -12,18 +12,13 @@ from sqlalchemy.orm import declarative_base, sessionmaker, Session
 # Initialisation de FastAPI
 app = FastAPI()
 
-# Configuration CORS
-origins = [
-    "http://localhost:5173",  # URL du frontend par défaut
-    "http://localhost:3000",  # Si vous changez le port du frontend
-]
-
+# Configuration CORS pour autoriser toutes les origines
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["*"],  # Autoriser toutes les origines
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=["*"],  # Autoriser toutes les méthodes HTTP
+    allow_headers=["*"],  # Autoriser tous les headers
 )
 
 # Création du moteur SQLAlchemy pour SQLite
@@ -248,6 +243,5 @@ async def root():
 
 if __name__ == "__main__":
     import uvicorn
-    # Récupérer le port à partir de la variable d'environnement BACKEND_PORT, sinon utiliser 8000
-    port = int(os.getenv("BACKEND_PORT", 8000))  
+    port = int(os.getenv("BACKEND_PORT", 8000))  # Utilisation de la variable d'environnement pour le port
     uvicorn.run("main:app", host="0.0.0.0", port=port, reload=True)

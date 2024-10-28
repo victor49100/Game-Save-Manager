@@ -144,19 +144,22 @@ function Home() {
                     <h3>Sauvegardes</h3>
                     <table>
                         <thead>
+                        {/*chapeaux du tableau*/}
                         <tr>
+                            <th>numero de la save</th>
                             <th>Chemin de la sauvegarde</th>
                             <th>Date</th>
                             <th>Actions</th>
                         </tr>
                         </thead>
                         <tbody>
-                        {saves.map((save) => (
+                        {saves.slice().reverse().map((save, index) => (
                             <tr key={save.save_id}>
+                                <td>{index + 1}</td>
                                 <td>{save.save_path}</td>
-                                <td>{new Date(save.save_date).toLocaleString()}</td>
+                                <td>{new Date(save.save_date).toLocaleString('fr-FR', {hour12: false})}</td>
                                 <td>
-                                    <button style={{ marginBottom: '10px' }} onClick={() => handleRestoreSave(save)}>
+                                    <button style={{marginBottom: '10px'}} onClick={() => handleRestoreSave(save)}>
                                         <FontAwesomeIcon icon={['fas', 'redo']}/> Restaurer
                                     </button>
                                     <button onClick={() => handleDeleteSave(save.save_id)}>

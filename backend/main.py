@@ -14,7 +14,8 @@ app = FastAPI()
 
 # Configuration CORS
 origins = [
-    "http://localhost:5173",  # URL du frontend
+    "http://localhost:5173",  # URL du frontend par défaut
+    "http://localhost:3000",  # Si vous changez le port du frontend
 ]
 
 app.add_middleware(
@@ -240,6 +241,13 @@ async def delete_game(game_id: int, db: Session = Depends(get_db)):
     return {"message": f"Jeu '{game.title}' supprimé avec succès."}
 
 # Route de base
+
 @app.get("/")
 async def root():
     return {"message": "Bienvenue dans l'API de sauvegarde de jeux"}
+
+if __name__ == "__main__":
+    import uvicorn
+    # Récupérer le port à partir de la variable d'environnement BACKEND_PORT, sinon utiliser 8000
+    port = int(os.getenv("BACKEND_PORT", 8000))  
+    uvicorn.run("main:app", host="0.0.0.0", port=port, reload=True)

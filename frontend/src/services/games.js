@@ -1,8 +1,7 @@
-// games.js
-
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:8000';
+// Utiliser l'URL du backend définie dans le fichier .env
+const API_BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
 // Récupérer tous les jeux
 export const getGames = async () => {

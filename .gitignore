@@ -1,0 +1,11 @@
+# Ignorer le dossier .idea (paramètres de l'IDE)
+.idea/
+
+# Ignorer les environnements virtuels Python (si applicable)
+venv/
+env/
+
+# Ignorer les fichiers de cache Python
+__pycache__/
+*.py[cod]
+*$py.class

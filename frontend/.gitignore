@@ -1,24 +1,70 @@
+# Node.js dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+
+# Public files
+/public/*.cache
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
 # Logs
-logs
-*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
+# Diagnostic reports (crash dumps)
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
 # Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# MacOS system files
 .DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+
+# ESLint cache
+.eslintcache
+
+# Parcel-bundler cache (si utilisé)
+.cache/
+
+# Coverage directory used by testing tools
+coverage/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Lock files (si vous décidez de les ignorer)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# Output of 'npm pack'
+*.tgz
+
+# Optional npm cache directory
+.npm
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Styled components
+.stylelintrc.cache
+
+# Build artifacts
+*.bundle.js
+*.bundle.map.js
+
+# System files
+Thumbs.db

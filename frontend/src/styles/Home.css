@@ -56,6 +56,7 @@ button {
 
 button:hover {
   background-color: #50fa7b;
+  color: #44475a;
 }
 
 button.delete-game-button {
@@ -132,14 +133,14 @@ button:focus, input:focus, select:focus {
   box-shadow: 0 0 0 2px #bd93f9;
 }
 
-button .fa-icon {
-  margin-right: 5px;
-}
-
 td button {
   margin-right: 5px;
 }
 
 td button:last-child {
   margin-right: 0;
+}
+
+button svg {
+  margin-right: 10px !important;
 }

@@ -31,12 +31,14 @@ Base = declarative_base()
 # Session SQLAlchemy
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
+
 # Modèles de la base de données
 class Game(Base):
     __tablename__ = "games"
     game_id = Column(Integer, primary_key=True, autoincrement=True)
     title = Column(String, nullable=False)
     AppID = Column(String, unique=True, nullable=False)  # Identifiant unique du jeu
+
 
 class Save(Base):
     __tablename__ = "saves"
@@ -46,11 +48,14 @@ class Save(Base):
     backup_path = Column(Text, nullable=False)  # Chemin du répertoire de sauvegarde
     save_date = Column(DateTime, default=datetime.utcnow)
 
+
 class SaveCreateRequest(BaseModel):
     save_path: str
 
+
 # Crée les tables dans la base de données si elles n'existent pas
 Base.metadata.create_all(bind=engine)
+
 
 # Fonction pour récupérer la session
 def get_db():
@@ -60,22 +65,27 @@ def get_db():
     finally:
         db.close()
 
+
 # Répertoire de sauvegarde local
 LOCAL_SAVE_DIR = "saves"
+
 
 # Modèles pour copier et restaurer des fichiers
 class SaveOperation(BaseModel):
     AppID: str
     savePath: str
 
+
 class RestoreSaveOperation(BaseModel):
     AppID: str
     backup_path: str
+
 
 # Fonction pour générer un sous-dossier horodaté dans le dossier de l'AppID
 def generate_timestamped_backup_dir(AppID):
     timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
     return os.path.join(LOCAL_SAVE_DIR, AppID, f"backup_{timestamp}")
+
 
 # Route pour copier la sauvegarde dans un répertoire local et enregistrer le chemin dans la base de données
 @app.post("/copySaveToLocal")
@@ -114,6 +124,7 @@ async def copy_save_to_local(save_operation: SaveOperation, db: Session = Depend
 
     return {"message": "Sauvegarde copiée dans le dossier local", "local_path": backup_dir}
 
+
 # Route pour restaurer une sauvegarde depuis le répertoire local
 @app.post("/restoreSaveFromLocal")
 async def restore_save_from_local(restore_operation: RestoreSaveOperation, db: Session = Depends(get_db)):
@@ -124,7 +135,8 @@ async def restore_save_from_local(restore_operation: RestoreSaveOperation, db: S
         raise HTTPException(status_code=404, detail="Jeu non trouvé avec cet AppID.")
 
     # Récupérer la sauvegarde associée
-    save = db.query(Save).filter(Save.game_id == game.game_id, Save.backup_path == restore_operation.backup_path).first()
+    save = db.query(Save).filter(Save.game_id == game.game_id,
+                                 Save.backup_path == restore_operation.backup_path).first()
 
     if not save:
         raise HTTPException(status_code=404, detail="Sauvegarde non trouvée.")
@@ -151,6 +163,7 @@ async def restore_save_from_local(restore_operation: RestoreSaveOperation, db: S
 
     return {"message": f"Sauvegarde restaurée avec succès."}
 
+
 # API Endpoints pour ajouter et gérer les jeux
 @app.post("/addGame/{title}/{AppID}")
 async def add_game(title: str, AppID: str, db: Session = Depends(get_db)):
@@ -165,10 +178,12 @@ async def add_game(title: str, AppID: str, db: Session = Depends(get_db)):
 
     return {"game_id": new_game.game_id, "title": new_game.title, "AppID": new_game.AppID}
 
+
 @app.get("/games/")
 async def get_all_games(db: Session = Depends(get_db)):
     games = db.query(Game).all()
     return games
+
 
 # API pour récupérer les sauvegardes d'un jeu via game_id
 @app.get("/saves/{game_id}")
@@ -181,6 +196,7 @@ async def get_saves_for_game(game_id: int, db: Session = Depends(get_db)):
 
     saves = db.query(Save).filter(Save.game_id == game.game_id).all()
     return saves
+
 
 # Route pour supprimer une sauvegarde et son répertoire de backup
 @app.delete("/saves/{save_id}")
@@ -209,6 +225,7 @@ async def delete_save(save_id: int, db: Session = Depends(get_db)):
 
     return {"message": f"Backup {backup_path} supprimé avec succès."}
 
+
 # Route pour supprimer un jeu
 @app.delete("/games/{game_id}")
 async def delete_game(game_id: int, db: Session = Depends(get_db)):
@@ -235,13 +252,16 @@ async def delete_game(game_id: int, db: Session = Depends(get_db)):
 
     return {"message": f"Jeu '{game.title}' supprimé avec succès."}
 
+
 # Route de base
 
 @app.get("/")
 async def root():
-    return {"message": "Bienvenue dans l'API de sauvegarde de jeux"}
+    return {"message": "Groovy Baby"}
+
 
 if __name__ == "__main__":
     import uvicorn
+
     port = int(os.getenv("BACKEND_PORT", 8000))  # Utilisation de la variable d'environnement pour le port
     uvicorn.run("main:app", host="0.0.0.0", port=port, reload=True)

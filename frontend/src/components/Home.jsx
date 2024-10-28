@@ -1,9 +1,17 @@
 // Home.jsx
 
-import React, { useState, useEffect } from 'react';
-import { getGames, addGame, deleteGame, getSavesForGame, deleteSave, copySaveToLocal, restoreSaveFromLocal } from '../services/games.js';
+import React, {useState, useEffect} from 'react';
+import {
+    getGames,
+    addGame,
+    deleteGame,
+    getSavesForGame,
+    deleteSave,
+    copySaveToLocal,
+    restoreSaveFromLocal
+} from '../services/games.js';
 import '../styles/Home.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
 function Home() {
     const [games, setGames] = useState([]);
@@ -45,13 +53,17 @@ function Home() {
     };
 
     const handleRestoreSave = async (save) => {
-        await restoreSaveFromLocal(selectedGame.AppID, save.backup_path); // Restaurer la sauvegarde
-        alert('Sauvegarde restaurée avec succès.');
+        if (window.confirm('Êtes-vous sûr de vouloir restaurer cette sauvegarde ?')) {
+            await restoreSaveFromLocal(selectedGame.AppID, save.backup_path); // Restaurer la sauvegarde
+            alert('Sauvegarde restaurée avec succès.');
+        }
     };
 
     const handleDeleteSave = async (saveId) => {
-        await deleteSave(saveId);
-        loadSaves(selectedGame.game_id);
+        if (window.confirm('Êtes-vous sûr de vouloir supprimer cette sauvegarde ?')) {
+            await deleteSave(saveId);
+            loadSaves(selectedGame.game_id);
+        }
     };
 
     const handleAddGame = async () => {
@@ -77,12 +89,12 @@ function Home() {
         <div className="container">
             {/* Logo du site */}
             <header className="site-header">
-                <h1><FontAwesomeIcon icon={['fas', 'gamepad']} /> Game Save Manager</h1>
+                <h1><FontAwesomeIcon icon={['fas', 'gamepad']}/> Game Save Manager</h1>
             </header>
 
             {/* Ajouter un jeu */}
             <div className="add-game-section">
-                <button onClick={handleAddGame}><FontAwesomeIcon icon={['fas', 'plus']} /> Ajouter un jeu</button>
+                <button onClick={handleAddGame}><FontAwesomeIcon icon={['fas', 'plus']}/> Ajouter un jeu</button>
             </div>
 
             {/* Liste déroulante pour sélectionner un jeu */}
@@ -98,7 +110,7 @@ function Home() {
                 </select>
                 {selectedGame && (
                     <button className="delete-game-button" onClick={() => handleDeleteGame(selectedGame.game_id)}>
-                        <FontAwesomeIcon icon={['fas', 'trash']} /> Supprimer le jeu
+                        <FontAwesomeIcon icon={['fas', 'trash']}/> Supprimer le jeu
                     </button>
                 )}
             </div>
@@ -121,7 +133,7 @@ function Home() {
                         onChange={(e) => setSavePath(e.target.value)}
                     />
                     <button onClick={handleAddSave}>
-                        <FontAwesomeIcon icon={['fas', 'save']} /> Ajouter une sauvegarde
+                        <FontAwesomeIcon icon={['fas', 'save']}/> Ajouter une sauvegarde
                     </button>
                 </div>
             )}
@@ -144,11 +156,11 @@ function Home() {
                                 <td>{save.save_path}</td>
                                 <td>{new Date(save.save_date).toLocaleString()}</td>
                                 <td>
-                                    <button onClick={() => handleRestoreSave(save)}>
-                                        <FontAwesomeIcon icon={['fas', 'redo']} /> Restaurer
+                                    <button style={{ marginBottom: '10px' }} onClick={() => handleRestoreSave(save)}>
+                                        <FontAwesomeIcon icon={['fas', 'redo']}/> Restaurer
                                     </button>
                                     <button onClick={() => handleDeleteSave(save.save_id)}>
-                                        <FontAwesomeIcon icon={['fas', 'trash']} /> Supprimer
+                                        <FontAwesomeIcon icon={['fas', 'trash']}/> Supprimer
                                     </button>
                                 </td>
                             </tr>

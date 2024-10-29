@@ -37,7 +37,7 @@
 5. Démarrez le backend avec un port spécifique :
 
    ```bash
-   BACKEND_PORT=5555 python main.py
+   BACKEND_PORT=5556 python main.py
    ```
 ### Frontend (React)
 
@@ -48,7 +48,7 @@
    npm install
    ```
 
-2. Démarrez le frontend en spécifiant un port :
+2. Démarrez le frontend :
    ```bash
-   FRONTEND_PORT=3000 npm run dev
+   npm run dev
    ```

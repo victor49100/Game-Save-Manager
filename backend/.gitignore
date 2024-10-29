@@ -15,10 +15,6 @@ SaveBdd.sqlite
 # Ignorer le dossier des sauvegardes
 saves/
 
-# Ignorer les fichiers de configuration sensibles
-.env
-*.env
-
 # Ignorer les logs
 *.log
 

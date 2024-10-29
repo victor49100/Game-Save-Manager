@@ -261,5 +261,5 @@ async def root():
 if __name__ == "__main__":
     import uvicorn
 
-    port = int(os.getenv("BACKEND_PORT", 4911))  # Utilisation de la variable d'environnement pour le port
+    port = int(os.getenv("BACKEND_PORT", 5556))  # Utilisation de la variable d'environnement pour le port
     uvicorn.run("main:app", host="0.0.0.0", port=port, reload=True)

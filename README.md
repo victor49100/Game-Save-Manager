@@ -11,8 +11,6 @@
 
    ```bash
    git clone https://github.com/victor49100/GameSaves
-   cd GameSaves
-   cd backend
    ```
 
 2. Créez et activez un environnement virtuel Python :
@@ -38,7 +36,6 @@
 1. Accédez au répertoire `frontend` et installez les dépendances :
 
    ```bash
-   cd ../frontend
    npm install
    ```
 

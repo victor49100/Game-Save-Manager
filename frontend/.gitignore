@@ -68,3 +68,6 @@ coverage/
 
 # System files
 Thumbs.db
+
+#config port
+vite.config.js

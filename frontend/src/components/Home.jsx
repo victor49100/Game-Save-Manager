@@ -99,7 +99,7 @@ function Home() {
 
             {/* Liste déroulante pour sélectionner un jeu */}
             <div className="game-select-section">
-                <label htmlFor="gameSelect">Sélectionner un jeu :</label>
+                <label htmlFor="gameSelect">Sélectionnez un jeu :</label>
                 <select id="gameSelect" onChange={handleSelectGame} value={selectedGame ? selectedGame.game_id : ''}>
                     <option value="">-- Sélectionnez un jeu --</option>
                     {games.map((game) => (
@@ -146,9 +146,9 @@ function Home() {
                         <thead>
                         {/*chapeaux du tableau*/}
                         <tr>
-                            <th>numero de la save</th>
-                            <th>Chemin de la sauvegarde</th>
-                            <th>Date</th>
+                            <th>Numero de la save</th>
+                            <th>Chemin de la save</th>
+                            <th>Date de la save</th>
                             <th>Actions</th>
                         </tr>
                         </thead>
@@ -159,10 +159,10 @@ function Home() {
                                 <td>{save.save_path}</td>
                                 <td>{new Date(save.save_date).toLocaleString('fr-FR', {hour12: false})}</td>
                                 <td>
-                                    <button style={{marginBottom: '10px'}} onClick={() => handleRestoreSave(save)}>
+                                    <button className="restore-save-button" onClick={() => handleRestoreSave(save)}>
                                         <FontAwesomeIcon icon={['fas', 'redo']}/> Restaurer
                                     </button>
-                                    <button onClick={() => handleDeleteSave(save.save_id)}>
+                                    <button className="delete-save-button" onClick={() => handleDeleteSave(save.save_id)}>
                                         <FontAwesomeIcon icon={['fas', 'trash']}/> Supprimer
                                     </button>
                                 </td>

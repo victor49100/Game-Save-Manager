@@ -31,7 +31,6 @@ Base = declarative_base()
 # Session SQLAlchemy
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
-
 # Modèles de la base de données
 class Game(Base):
     __tablename__ = "games"
@@ -249,7 +248,6 @@ async def delete_game(game_id: int, db: Session = Depends(get_db)):
     # Supprimer le jeu
     db.delete(game)
     db.commit()
-
     return {"message": f"Jeu '{game.title}' supprimé avec succès."}
 
 
@@ -263,5 +261,5 @@ async def root():
 if __name__ == "__main__":
     import uvicorn
 
-    port = int(os.getenv("BACKEND_PORT", 8000))  # Utilisation de la variable d'environnement pour le port
+    port = int(os.getenv("BACKEND_PORT", 4911))  # Utilisation de la variable d'environnement pour le port
     uvicorn.run("main:app", host="0.0.0.0", port=port, reload=True)

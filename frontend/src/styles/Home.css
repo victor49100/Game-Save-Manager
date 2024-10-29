@@ -68,6 +68,23 @@ button.delete-game-button:hover {
   background-color: #ff79c6;
 }
 
+button.delete-save-button {
+  background-color: #ff5555;
+}
+
+button.delete-save-button:hover {
+  background-color: #ff79c6;
+}
+
+button.restore-save-button {
+  background-color: #50fa7b;
+  color: #44475a;
+}
+
+button.restore-save-button:hover {
+  background-color: #2bd5b6;
+}
+
 button .fa-trash {
   margin-right: 5px;
 }

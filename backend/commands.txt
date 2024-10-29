@@ -1,2 +1,0 @@
-sqlite3 SaveBdd.sqlite < create_db.sql
-uvicorn main:app --reload --host 0.0.0.0 --port 8000

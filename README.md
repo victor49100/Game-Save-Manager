@@ -11,8 +11,6 @@
 
    ```bash
    git clone https://github.com/victor49100/GameSaves
-   cd GameSaves
-   cd backend
    ```
 
 2. Créez et activez un environnement virtuel Python :
@@ -28,13 +26,7 @@
    pip install -r requirements.txt
    ```
 
-4. Créez la base de données SQLite `SaveBdd.sqlite` dans le répertoire `backend` :
-
-   ```bash
-   sqlite3 SaveBdd.sqlite < create_db.sql
-   ```
-
-5. Démarrez le backend avec un port spécifique :
+4. Démarrez le backend avec un port spécifique :
 
    ```bash
    python main.py
@@ -44,7 +36,6 @@
 1. Accédez au répertoire `frontend` et installez les dépendances :
 
    ```bash
-   cd ../frontend
    npm install
    ```
 

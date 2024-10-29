@@ -14,7 +14,7 @@ from sqlalchemy.orm import declarative_base, sessionmaker, Session
 app = FastAPI()
 
 # Charge les variables d'environnement depuis .env
-load_dotenv(dotenv_path="/home/major/Documents/Projet/GameSaveDev/GameSaves/backend/.env")
+load_dotenv(dotenv_path="/PathTo/.env")
 
 # Configuration CORS pour autoriser toutes les origines
 app.add_middleware(
@@ -269,6 +269,6 @@ async def root():
 if __name__ == "__main__":
     import uvicorn
 
-    port = int(os.getenv("BACKEND_PORT", "8000"))
+    port = int(os.getenv("BACKEND_PORT", "5556"))
     print("Port utilisé :", port)  # Pour vérifier que le port est correctement chargé
     uvicorn.run("main:app", host="0.0.0.0", port=port, reload=True)

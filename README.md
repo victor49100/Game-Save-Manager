@@ -37,7 +37,7 @@
 5. Démarrez le backend avec un port spécifique :
 
    ```bash
-   BACKEND_PORT=5556 python main.py
+   python main.py
    ```
 ### Frontend (React)
 

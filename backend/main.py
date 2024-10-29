@@ -14,7 +14,7 @@ from sqlalchemy.orm import declarative_base, sessionmaker, Session
 app = FastAPI()
 
 # Charge les variables d'environnement depuis .env
-load_dotenv(dotenv_path="/home/major/Documents/Projet/GameSaveDev/GameSaves/backend/.env")
+load_dotenv(dotenv_path="/PathTo/.env")
 
 # Configuration CORS pour autoriser toutes les origines
 app.add_middleware(

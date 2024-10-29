@@ -35,4 +35,4 @@ dist/
 *.egg-info/
 
 commands.txt
-
+.env

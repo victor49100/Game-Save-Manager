@@ -146,10 +146,14 @@ async def restore_save_from_local(restore_operation: RestoreSaveOperation, db: S
 
     backup_path = save.backup_path
     original_save_path = save.save_path
-
     # Vérifier que le backup existe
     if not os.path.exists(backup_path):
         raise HTTPException(status_code=404, detail="Chemin de backup introuvable")
+
+    # Supprimer le contenu du dossier de sauvegarde existant
+    if os.path.exists(original_save_path):
+        shutil.rmtree(original_save_path)  # Supprime tout le contenu du dossier de sauvegarde
+        os.makedirs(original_save_path)    # Récréé le dossier vide
 
     # Restaurer la sauvegarde
     if os.path.isdir(backup_path):

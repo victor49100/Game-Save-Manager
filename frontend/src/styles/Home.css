@@ -1,163 +1,160 @@
 /* Home.css */
 
 body {
-  background-color: #282a36;
-  color: #f8f8f2;
-  font-family: 'Courier New', Courier, monospace;
-  margin: 0;
-  padding: 0;
+    background-color: #282a36;
+    color: #f8f8f2;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    padding: 0;
 }
 
 .container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
 .site-header h1 {
-  display: flex;
-  align-items: center;
-  font-size: 2rem;
-  color: #50fa7b;
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+    color: #50fa7b;
 }
 
 .site-header h1 .fa-gamepad {
-  margin-right: 10px;
+    margin-right: 10px;
 }
 
 h2, h3 {
-  color: #50fa7b;
+    color: #50fa7b;
 }
 
 .add-game-section, .add-save-section {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 input, select {
-  padding: 10px;
-  margin-right: 10px;
-  border: 2px solid #6272a4;
-  background-color: #44475a;
-  color: #f8f8f2;
-  border-radius: 4px;
+    padding: 10px;
+    margin-right: 10px;
+    border: 2px solid #6272a4;
+    background-color: #282a36;
+    color: #f8f8f2;
+    border-radius: 4px;
 }
 
 button {
-  font-size: 1em;
-  padding: 10px 15px;
-  background-color: #6272a4;
-  border: none;
-  color: #f8f8f2;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: background-color 0.2s ease-in-out;
-  align-items: center;
+    font-size: 1em;
+    padding: 10px 15px;
+    background-color: #6272a4;
+    border: none;
+    color: #f8f8f2;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.2s ease-in-out;
+    align-items: center;
 }
 
 button:hover {
-  background-color: #50fa7b;
-  color: #44475a;
+    background-color: #50fa7b;
+    color: #44475a;
 }
 
 button.delete-game-button {
-  background-color: #ff5555;
-  margin-left: 10px;
+    background-color: #ff5555;
+    margin-left: 10px;
 }
 
 button.delete-game-button:hover {
-  background-color: #ff79c6;
+    background-color: #ff79c6;
 }
 
 button.delete-save-button {
-  background-color: #ff5555;
+    background-color: #ff5555;
 }
 
 button.delete-save-button:hover {
-  background-color: #ff79c6;
+    background-color: #ff79c6;
 }
 
 button.restore-save-button {
-  background-color: #50fa7b;
-  color: #44475a;
+    background-color: #50fa7b;
+    color: #44475a;
 }
 
 button.restore-save-button:hover {
-  background-color: #2bd5b6;
+    background-color: #2bd5b6;
 }
 
 button .fa-trash {
-  margin-right: 5px;
+    margin-right: 5px;
 }
 
 table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 25px;
-  border-radius: 10px;
-  overflow: hidden;
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 25px;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 th, td {
-  padding: 12px 15px;
-  border-bottom: 1px solid #6272a4;
-  text-align: center;
+    padding: 12px 15px;
+    border-bottom: 1px solid #6272a4;
+    text-align: center;
 }
 
 th {
-  background-color: #44475a;
-  color: #f8f8f2;
+    background-color: #44475a;
+    color: #f8f8f2;
 }
 
 td {
-  background-color: #282a36;
-  color: #f8f8f2;
-}
-
-.saves-list table tr:hover td {
-  background-color: #343746;
+    background-color: #282a36;
+    color: #f8f8f2;
 }
 
 .game-select-section, .game-info {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 .game-info h2 {
-  margin-top: 0;
+    text-decoration: underline;
+    margin-top: 0;
 }
 
 .saves-list table tr:nth-child(even) td {
-  background-color: #343746;
+    background-color: #343746;
 }
 
 label {
-  margin-right: 10px;
+    margin-right: 10px;
 }
 
 ::placeholder {
-  color: #bd93f9;
+    color: #bd93f9;
 }
 
 a {
-  color: #8be9fd;
+    color: #8be9fd;
 }
 
 a:hover {
-  color: #ff79c6;
+    color: #ff79c6;
 }
 
 button:focus, input:focus, select:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px #bd93f9;
+    outline: none;
+    box-shadow: 0 0 0 2px #bd93f9;
 }
 
 td button {
-  margin-right: 5px;
+    margin-right: 5px;
 }
 
 td button:last-child {
-  margin-right: 0;
+    margin-right: 0;
 }
 
 button svg {
-  margin-right: 10px !important;
+    margin-right: 10px !important;
 }

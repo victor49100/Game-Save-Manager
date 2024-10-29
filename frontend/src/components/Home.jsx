@@ -162,7 +162,8 @@ function Home() {
                                     <button className="restore-save-button" onClick={() => handleRestoreSave(save)}>
                                         <FontAwesomeIcon icon={['fas', 'redo']}/> Restaurer
                                     </button>
-                                    <button className="delete-save-button" onClick={() => handleDeleteSave(save.save_id)}>
+                                    <button className="delete-save-button"
+                                            onClick={() => handleDeleteSave(save.save_id)}>
                                         <FontAwesomeIcon icon={['fas', 'trash']}/> Supprimer
                                     </button>
                                 </td>

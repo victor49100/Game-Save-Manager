@@ -28,13 +28,7 @@
    pip install -r requirements.txt
    ```
 
-4. Créez la base de données SQLite `SaveBdd.sqlite` dans le répertoire `backend` :
-
-   ```bash
-   sqlite3 SaveBdd.sqlite < create_db.sql
-   ```
-
-5. Démarrez le backend avec un port spécifique :
+4. Démarrez le backend avec un port spécifique :
 
    ```bash
    python main.py

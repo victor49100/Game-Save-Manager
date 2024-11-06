@@ -28,8 +28,8 @@ export const getSavesForGame = async (game_id) => {
 };
 
 // Copier une sauvegarde en local
-export const copySaveToLocal = async (AppID, savePath) => {
-  const response = await axios.post(`${API_BASE_URL}/copySaveToLocal`, { AppID, savePath });
+export const copySaveToLocal = async (AppID, savePath, saveName) => {
+  const response = await axios.post(`${API_BASE_URL}/copySaveToLocal`, { AppID, savePath, saveName });
   return response.data;
 };
 

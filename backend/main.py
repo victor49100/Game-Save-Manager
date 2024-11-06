@@ -14,7 +14,7 @@ from sqlalchemy.orm import declarative_base, sessionmaker, Session
 app = FastAPI()
 
 # Charge les variables d'environnement depuis .env
-load_dotenv(dotenv_path="/PathTo/.env")
+load_dotenv(dotenv_path=".env")
 
 # Configuration CORS pour autoriser toutes les origines
 app.add_middleware(
@@ -48,7 +48,8 @@ class Save(Base):
     save_id = Column(Integer, primary_key=True, autoincrement=True)
     game_id = Column(Integer, ForeignKey('games.game_id'), nullable=False)
     save_path = Column(Text, nullable=False)
-    backup_path = Column(Text, nullable=False)  # Chemin du répertoire de sauvegarde
+    backup_path = Column(Text, nullable=False)
+    save_name = Column(String, nullable=True)
     save_date = Column(DateTime, default=datetime.utcnow)
 
 
@@ -77,6 +78,7 @@ LOCAL_SAVE_DIR = "saves"
 class SaveOperation(BaseModel):
     AppID: str
     savePath: str
+    saveName: str
 
 
 class RestoreSaveOperation(BaseModel):
@@ -121,7 +123,7 @@ async def copy_save_to_local(save_operation: SaveOperation, db: Session = Depend
         shutil.copy2(save_operation.savePath, backup_dir)
 
     # Enregistrer le chemin du backup dans la base de données
-    new_save = Save(game_id=game.game_id, save_path=save_operation.savePath, backup_path=backup_dir)
+    new_save = Save(game_id=game.game_id, save_path=save_operation.savePath, backup_path=backup_dir, save_name=save_operation.saveName)
     db.add(new_save)
     db.commit()
 

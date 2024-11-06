@@ -46,7 +46,8 @@ function Home() {
 
     const handleAddSave = async () => {
         if (savePath && selectedGame) {
-            await copySaveToLocal(selectedGame.AppID, savePath); // Copier la sauvegarde en local
+            const saveName = prompt("Entrez le nom de la save (facultatif) :");
+            await copySaveToLocal(selectedGame.AppID, savePath , saveName); // Copier la sauvegarde en local
             setSavePath('');
             loadSaves(selectedGame.game_id);
         }
@@ -147,6 +148,7 @@ function Home() {
                         {/*chapeaux du tableau*/}
                         <tr>
                             <th>Numero de la save</th>
+                            <th>Nom de la save</th>
                             <th>Chemin de la save</th>
                             <th>Date de la save</th>
                             <th>Actions</th>
@@ -156,6 +158,7 @@ function Home() {
                         {saves.slice().reverse().map((save, index) => (
                             <tr key={save.save_id}>
                                 <td>{index + 1}</td>
+                                <td>{save.save_name}</td>
                                 <td>{save.save_path}</td>
                                 <td>{new Date(save.save_date).toLocaleString('fr-FR', {hour12: false})}</td>
                                 <td>

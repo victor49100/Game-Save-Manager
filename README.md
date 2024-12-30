@@ -43,3 +43,4 @@
    ```bash
    npm run dev
    ```
+![image](https://github.com/user-attachments/assets/22f22397-8275-472c-9ba1-8cc20a462531)
